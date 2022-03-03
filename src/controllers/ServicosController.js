@@ -29,8 +29,9 @@ module.exports = {
   },
 
   atualizar: (req, res) => {
-    const { id } = req.params
-    ServicoModel.atualizar(id)
+    const { id } = req.params;
+    ServicoModel.atualizar(id , req.body);
+    return res.redirect('servicos/admin');
   }
 };
 
