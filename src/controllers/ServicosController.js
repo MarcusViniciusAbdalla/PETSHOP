@@ -25,13 +25,13 @@ module.exports = {
 
   criar: (req , res) => {
     ServicoModel.criar(req.body);
-    return res.redirect('servicos/admin');
+    return res.redirect('/servicos/admin');
   },
 
   atualizar: (req, res) => {
     const { id } = req.params;
     ServicoModel.atualizar(id , req.body);
-    return res.redirect('servicos/admin');
+    return res.redirect('/servicos/admin');
   }
 };
 
