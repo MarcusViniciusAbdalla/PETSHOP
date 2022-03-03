@@ -13,12 +13,24 @@ module.exports = {
   },
 
   editar: (req, res) => {
-    return res.render('cadastro-edicao');
+    const { id } = req.params;
+    let servico = null
+
+    if(id) { 
+      servico = ServicoModel.buscar(id)
+    }
+
+    return res.render('cadastro-edicao' , {servico} );
   },
 
   criar: (req , res) => {
     ServicoModel.criar(req.body);
     return res.redirect('servicos/admin');
+  },
+
+  atualizar: (req, res) => {
+    const { id } = req.params
+    ServicoModel.atualizar(id)
   }
 };
 
