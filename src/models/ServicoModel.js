@@ -41,5 +41,17 @@ module.exports = {
 
   buscar (id) {
     return this.servicos.find(servico => servico.id == id)
+  },
+
+  atualizar (id, { nome, valor , descricao }) {
+    if (!id) return
+
+    if (!nome || valor || descricao) return
+
+    const servico = this.buscar(id);
+
+    servico.nome = nome;
+    servico.valor = valor;
+    servico.descricao = descricao;
   }
 }
