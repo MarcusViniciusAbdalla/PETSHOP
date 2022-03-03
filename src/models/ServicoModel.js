@@ -1,4 +1,4 @@
-const { uuid } = require('uuidv4')
+const { uuid } = require('uuidv4');
 
 module.exports = {
   servicos: [
