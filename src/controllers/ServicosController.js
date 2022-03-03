@@ -10,6 +10,15 @@ module.exports = {
   admin:(req,res) => {
     const servicos = ServicoModel.index();
     return res.render('admin-servicos', { servicos });
+  },
+
+  editar: (req, res) => {
+    return res.render('cadastro-edicao');
+  },
+
+  criar: (req , res) => {
+    ServicoModel.criar(req.body);
+    return res.redirect('servicos/admin');
   }
 };
 
