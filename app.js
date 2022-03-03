@@ -13,7 +13,7 @@ var servicosRouter = require('./src/routes/servicos');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'src/views'));
+app.set('views', path.join(__dirname, './src/views'));
 app.set('view engine', 'ejs');
 
 app.use(methodOverride('_method'));

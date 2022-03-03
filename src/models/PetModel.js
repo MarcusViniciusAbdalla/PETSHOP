@@ -1,11 +1,9 @@
-const PetsController = require("../controllers/PetsController");
-
 const PetModel = {
     obterInformacoes: () => ([
-        'gato',
-        'cachorro',
-        'papagaio'
+      'gato',
+      'cachorro',
+      'papagaio'
     ])
-};
-
-module.exports = PetModel
+  };
+  
+  module.exports = PetModel
