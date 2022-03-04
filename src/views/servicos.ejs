@@ -7,8 +7,11 @@
 
         <% for (const servico of servicos) { %>
           <article>
-            <img src="<%= servico.image %> " alt="">
-            <div class="thumb"></div>
+            <% if (servico.image) { %>
+              <img src="<%= servico.image %> " alt="">
+            <% } else { %>
+              <div class="thumb"></div>         
+            <% } %>           
             <div class="info">
               <h2><%= servico.nome %></h2>
               <p><%= servico.valor %> </p>

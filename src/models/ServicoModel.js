@@ -30,9 +30,9 @@ module.exports = {
   criar ({ nome, valor, descricao }, file) {
     if (!nome || !valor || !descricao) return
 
-    const filePath = file ? path.join('/images/uploads', filename): ''
+    const filePath = file ? path.join('/images/uploads', file.filename): ''
 
-    this.servicos.push({ id: uuid(), nome, valor, descricao , image });
+    this.servicos.push({ id: uuid(), nome, valor, descricao , image: filePath });
   },
 
   buscar (id) {
