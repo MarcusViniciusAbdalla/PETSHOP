@@ -32,5 +32,11 @@ module.exports = {
     const { id } = req.params;
     ServicoModel.atualizar(id, req.body);
     return res.redirect('/servicos/admin');
+  },
+
+  deletar: (req , res) => {
+    const { id } = req.params;
+    ServicoModel.deletar(id);
+    return res.redirect('/servicos/admin');
   }
 };

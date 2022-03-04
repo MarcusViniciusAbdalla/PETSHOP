@@ -46,5 +46,12 @@ module.exports = {
     servico.nome = nome;
     servico.valor = valor;
     servico.descricao = descricao;
+  },
+
+  deletar (id) {
+    if(!id) return
+
+    const index = this.servicos.findIndex(servico => servico.id == id);
+    this.servicos.splice(index, 1);
   }
 }
