@@ -12,11 +12,13 @@ const storage = multer.diskStorage({
     const [filename, extension] = file.originalname.split('.'); // [ banho , jpeg ]
     callback(null , filename + '-'+ Date.now() + '.' + extension)  //banho 20210222.jpeg
   }
-})
+});
+
+const upload = multer({ storage });
 
 // C - Criação de novos serviços
 router.get('/cadastrar', ServicosController.editar);
-router.post('/cadastrar', ServicosController.criar);
+router.post('/cadastrar', upload.single('servico-img'), ServicosController.criar);
 
 // R - Leitura de serviços
 router.get('/', ServicosController.index);
@@ -24,7 +26,7 @@ router.get('/admin', ServicosController.admin);
 
 // U - Atualização de serviços
 router.get('/editar/:id', ServicosController.editar);
-router.put('/editar/:id', ServicosController.atualizar);
+router.put('/editar/:id', upload.single('servico-img'), ServicosController.atualizar);
 
 // D - Deleção de Serviços
 router.delete('/deletar/:id', ServicosController.deletar);
