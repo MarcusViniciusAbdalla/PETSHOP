@@ -14,4 +14,7 @@ router.get('/admin', ServicosController.admin);
 router.get('/editar/:id', ServicosController.editar);
 router.put('/editar/:id', ServicosController.atualizar);
 
+// D - Deleção de Serviços
+router.delete('/deletar/:id', ServicosController.deletar);
+
 module.exports = router;
