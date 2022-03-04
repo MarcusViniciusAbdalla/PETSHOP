@@ -10,9 +10,9 @@
       <% } %>
 
       <% if (servico) { %>
-        <form action="/servicos/editar/<%= servico.id %>?_method=PUT" method="POST">
+        <form action="/servicos/editar/<%= servico.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
       <% } else { %>
-        <form action="/servicos/cadastrar" method="POST">
+        <form action="/servicos/cadastrar" method="POST" enctype="multipart/form-data">
       <% } %>
         <div class="align-row form-control">
           <div class="field">
@@ -28,6 +28,9 @@
   
         <label for="descricao">Descrição</label>
         <textarea id="descricao" name="descricao"><% if (servico) { %><%= servico.descricao %><% } %></textarea>
+
+        <label for="servico-img">Imagem do serviço</label>
+        <input type="file" name="servico-img" id="servico-img">
 
         <button class="btn btn-primary" type="submit">Enviar</button>
       </form>
