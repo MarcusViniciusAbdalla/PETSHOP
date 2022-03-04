@@ -1,5 +1,6 @@
 const { uuid } = require('uuidv4');
 const path = require('path');
+const fs = require('fs');
 
 module.exports = {
   servicos: [
@@ -13,7 +14,7 @@ module.exports = {
       id: 2,
       nome: 'Tosa',
       valor: 'R$ 15,00',
-      descricao: 'Tosa completa'
+      descricao: 'Tosa completa'    
     },
     {
       id: 3,
@@ -54,6 +55,9 @@ module.exports = {
   deletar (id) {
     if(!id) return
 
+    const servico = this.buscar(id);
+    const filePath = servico.image;
+    fs.unlink('public' + filePath, (err) => console.log(err));
     const index = this.servicos.findIndex(servico => servico.id == id);
     this.servicos.splice(index, 1);
   }
