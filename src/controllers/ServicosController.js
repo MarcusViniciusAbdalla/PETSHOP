@@ -24,7 +24,8 @@ module.exports = {
   },
 
   criar: (req, res) => {
-    ServicoModel.criar(req.body);
+    const {body , file} = req;
+    ServicoModel.criar(body , file);
     return res.redirect('/servicos/admin');
   },
 

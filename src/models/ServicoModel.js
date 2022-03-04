@@ -1,4 +1,5 @@
 const { uuid } = require('uuidv4');
+const path = require('path');
 
 module.exports = {
   servicos: [
@@ -26,10 +27,12 @@ module.exports = {
     return this.servicos
   },
 
-  criar ({ nome, valor, descricao }) {
+  criar ({ nome, valor, descricao }, file) {
     if (!nome || !valor || !descricao) return
 
-    this.servicos.push({ id: uuid(), nome, valor, descricao });
+    const filePath = file ? path.join('/images/uploads', filename): ''
+
+    this.servicos.push({ id: uuid(), nome, valor, descricao , image });
   },
 
   buscar (id) {
