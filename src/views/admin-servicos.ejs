@@ -14,6 +14,7 @@
         </caption>
 
         <thead>
+          <th>Image</th>
           <th>Nome</th>
           <th>Preço</th>
           <th>Descrição</th>
@@ -28,7 +29,7 @@
             <td><%= servico.valor %> </td>
             <td><%= servico.descricao %> </td>
             <td class="acoes">
-              <form action="/servicos/deletar/<%= servico.id %>?_method=DELETE " method="POST">
+              <form action="/servicos/deletar/<%= servico.id %>?_method=DELETE" method="POST">
                 <a href="/servicos/editar/<%= servico.id %>" class="btn">Editar</a>
                 <button type="submit" class="btn btn-secondary">Deletar</button>
               </form>

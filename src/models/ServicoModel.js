@@ -14,7 +14,7 @@ module.exports = {
       id: 2,
       nome: 'Tosa',
       valor: 'R$ 15,00',
-      descricao: 'Tosa completa'    
+      descricao: 'Tosa completa'
     },
     {
       id: 3,
@@ -31,9 +31,9 @@ module.exports = {
   criar ({ nome, valor, descricao }, file) {
     if (!nome || !valor || !descricao) return
 
-    const filePath = file ? path.join('/images/uploads', file.filename): ''
+    const filePath = file ? path.join('/images/uploads', file.filename) : ''
 
-    this.servicos.push({ id: uuid(), nome, valor, descricao , image: filePath });
+    this.servicos.push({ id: uuid(), nome, valor, descricao, image: filePath });
   },
 
   buscar (id) {
@@ -53,11 +53,13 @@ module.exports = {
   },
 
   deletar (id) {
-    if(!id) return
+    if (!id) return
 
     const servico = this.buscar(id);
     const filePath = servico.image;
+
     fs.unlink('public' + filePath, (err) => console.log(err));
+
     const index = this.servicos.findIndex(servico => servico.id == id);
     this.servicos.splice(index, 1);
   }
