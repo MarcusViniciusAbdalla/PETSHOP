@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ServicosController = require('../controllers/ServicosController');
 const multer = require('multer');
+const { check } = require('express-validator')
 
 const storage = multer.diskStorage({
   destination(req, file, callback) {
@@ -16,9 +17,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+const middlewareValidacao = [
+  check('nome').notEmpty()
+]
+
 // C - Criação de novos serviços
 router.get('/cadastrar', ServicosController.editar);
-router.post('/cadastrar', upload.single('servico-img'), ServicosController.criar);
+router.post('/cadastrar',middlewareValidacao ,upload.single('servico-img'), ServicosController.criar);
 
 // R - Leitura de serviços
 router.get('/', ServicosController.index);

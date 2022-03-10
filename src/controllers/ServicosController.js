@@ -1,4 +1,5 @@
 const ServicoModel = require('../models/ServicoModel')
+const {validationResult} = require('express-validator')
 
 module.exports = {
   index: (req, res) => {
@@ -25,6 +26,14 @@ module.exports = {
 
   criar: (req, res) => {
     const {body , file} = req;
+    const erros = validationResult(req).erros;
+
+    if(!erros.lenght) {
+      ServicoModel.criar(body,file);
+      return res.redirect('/servicos/admin')
+    }
+    
+
     ServicoModel.criar(body , file);
     return res.redirect('/servicos/admin');
   },
