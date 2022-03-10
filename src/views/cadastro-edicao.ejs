@@ -3,6 +3,14 @@
 <main>
   <section class="cadastro-edicao">
     <div class="container">
+      <% if (erros) { %>
+        <ul class="erros">
+          <% erros.forEach(erro => { %>
+            <li><%= erro.msg %></li>
+          <% }) %>
+        </ul>
+      <% } %>
+
       <% if (servico) { %>
         <h1>Editar de serviço</h1>
       <% } else { %>

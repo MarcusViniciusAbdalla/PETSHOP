@@ -1,29 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const ServicosController = require('../controllers/ServicosController');
-const multer = require('multer');
-const { check } = require('express-validator')
-
-const storage = multer.diskStorage({
-  destination(req, file, callback) {
-    callback(null , 'public/images/uploads')
-  },
-
-  filename(req, file, callback) {
-    const [filename, extension] = file.originalname.split('.'); // [ banho , jpeg ]
-    callback(null , filename + '-'+ Date.now() + '.' + extension)  //banho 20210222.jpeg
-  }
-});
-
-const upload = multer({ storage });
-
-const middlewareValidacao = [
-  check('nome').notEmpty()
-]
+const validadorCadastroServicos = require('../middlewares/validadorCadastroServicos');
+const multer = require('../middlewares/multer')
 
 // C - Criação de novos serviços
 router.get('/cadastrar', ServicosController.editar);
-router.post('/cadastrar',middlewareValidacao ,upload.single('servico-img'), ServicosController.criar);
+router.post('/cadastrar',  multer.single('servico-img'), validadorCadastroServicos, ServicosController.criar);
 
 // R - Leitura de serviços
 router.get('/', ServicosController.index);
@@ -31,9 +14,9 @@ router.get('/admin', ServicosController.admin);
 
 // U - Atualização de serviços
 router.get('/editar/:id', ServicosController.editar);
-router.put('/editar/:id', upload.single('servico-img'), ServicosController.atualizar);
+router.put('/editar/:id', multer.single('servico-img'), validadorCadastroServicos, ServicosController.atualizar);
 
-// D - Deleção de Serviços
+// D - Deleção de servicos
 router.delete('/deletar/:id', ServicosController.deletar);
 
 module.exports = router;
