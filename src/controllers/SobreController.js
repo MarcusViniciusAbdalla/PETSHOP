@@ -1,9 +1,5 @@
-const SobreModel = require('../models/SobreModel');
-
-const SobreController = {
+module.exports = {
   index: (req, res) => {
-    res.render('sobre', { sobre });
+    return res.render('sobre')
   }
 }
-
-module.exports = SobreController;
